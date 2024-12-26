@@ -2,6 +2,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MechUnit : MonoBehaviour
 {
+    public static float VEL_NEAR_ZERO_CUTOFF = 0.1f;
+    private const float BAD_FRAMES_COMPENSATE = 5f;
     [SerializeField] private float TEMP_MOVE_FORCE = 1f;
     [SerializeField] private float TEMP_TURN_SPEED_DEG = 90f;
     [SerializeField] private float TEMP_MASS = 1f;
@@ -15,7 +17,7 @@ public class MechUnit : MonoBehaviour
         mPhysics.mass = TEMP_MASS;
     }
 
-    public void AcclerateTowards(Vector3 direction)
+    public void AccelerateTowards(Vector3 direction)
     {
         if(direction.sqrMagnitude != 1)
         {
@@ -27,7 +29,7 @@ public class MechUnit : MonoBehaviour
 
     public void Brake()
     {
-        if (mPhysics.linearVelocity.sqrMagnitude == 0)
+        if (mPhysics.linearVelocity.sqrMagnitude < VEL_NEAR_ZERO_CUTOFF)
         {
             return;
         }
@@ -44,17 +46,24 @@ public class MechUnit : MonoBehaviour
     public void RotateTowards(Quaternion newRotation)
     {
         mTargetRotation = newRotation;
+        Debug.Log("New rotation target");
     }
 
     private void FixedUpdate()
-    {
-        if(transform.rotation != mTargetRotation && (Quaternion.Angle(transform.rotation, mTargetRotation) < (TEMP_TURN_SPEED_DEG * Time.deltaTime)))
-        {
+    { 
+        if (transform.rotation != mTargetRotation && (Quaternion.Angle(transform.rotation, mTargetRotation) <= (TEMP_TURN_SPEED_DEG * Time.deltaTime)))
+        {           
             transform.rotation = mTargetRotation;
+            //Debug.Log("Matching rotation to target");
+        }
+        else if(transform.rotation != mTargetRotation)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, mTargetRotation, TEMP_TURN_SPEED_DEG * Time.deltaTime);
+            //Debug.Log("Rotating to target");
         }
         else
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, mTargetRotation, TEMP_TURN_SPEED_DEG * Time.deltaTime);
+            //Debug.Log("No Rotation logged");
         }
     }
 }

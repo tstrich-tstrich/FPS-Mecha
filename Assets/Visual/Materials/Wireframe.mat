@@ -31,7 +31,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Cutoff: 0.5
-    - _WireThickness: 594
+    - _WireThickness: 560
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -18,23 +18,22 @@ public class PlayerControl : MonoBehaviour
     //public static float JUMP_FORCE = 20f;
 
     private Rigidbody mPhysics;
-    private PlayerCamera mCamera;
+    //private PlayerCamera mCamera;
     private MechUnit mUnit;
 
     private Vector3 mDirection = Vector3.zero;
+    public Vector3 CurrentAccelDirection { get; private set; }
 
     private void Awake()
     {
         mPhysics = GetComponent<Rigidbody>();
-        mCamera = GetComponent<PlayerCamera>();
+        //mCamera = GetComponent<PlayerCamera>();
         mUnit = GetComponent<MechUnit>();
     }
 
 
     private void Update()
     {
-        mUnit.RotateTowards(mCamera.GetViewDirection());
-
         mDirection = Vector3.zero;
         if (Input.GetKey(FORWARD))
         {
@@ -66,13 +65,24 @@ public class PlayerControl : MonoBehaviour
             mDirection -= transform.up;
         }
 
+        if(Input.GetKeyDown(STOP))//toggle auto braking
+        {
+            AutoStop = !AutoStop;
+        }
+
         if(mDirection != Vector3.zero)
         {
-            mUnit.AcclerateTowards(mDirection);
+            mUnit.AccelerateTowards(mDirection);
+            CurrentAccelDirection = mDirection;
         }
-        else if (AutoStop || Input.GetKey(STOP))
+        else if (AutoStop)
         {
             mUnit.Brake();
+            CurrentAccelDirection = -mPhysics.linearVelocity;
+        }
+        else
+        {
+            CurrentAccelDirection = Vector3.zero;
         }
     }
 }
