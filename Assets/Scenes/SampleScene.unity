@@ -2645,7 +2645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 1, g: 0.12565744, b: 0, a: 1}
-  m_EffectDistance: {x: 1, y: 1}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!222 &1598581056
 CanvasRenderer:
@@ -3030,6 +3030,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 743331919876190076, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952589998693651699, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952589998693651699, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952589998693651699, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0010528564
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952589998693651699, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2989261437791695148, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
@@ -3833,6 +3849,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 743331919876190076, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952589998693651699, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952589998693651699, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952589998693651699, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0038452148
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952589998693651699, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6563345823153348531, guid: f1d86e1b7af9dbf4bae386dcd8b9c25e, type: 3}
