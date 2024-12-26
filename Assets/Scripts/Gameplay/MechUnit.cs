@@ -46,7 +46,7 @@ public class MechUnit : MonoBehaviour
     public void RotateTowards(Quaternion newRotation)
     {
         mTargetRotation = newRotation;
-        Debug.Log("New rotation target");
+        //Debug.Log("New rotation target");
     }
 
     private void FixedUpdate()
